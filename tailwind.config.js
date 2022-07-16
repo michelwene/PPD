@@ -20,6 +20,7 @@ module.exports = {
       orange: "#FF7D0A",
       "purple-light": "#EBEBFF",
       white: "#FFFFFF",
+      "gray-light": "#E6E6E6",
     },
     fontFamily: {
       sans: ["Source Sans Pro", "sans-serif"],
