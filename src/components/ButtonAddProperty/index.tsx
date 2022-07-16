@@ -1,5 +1,4 @@
 import React, { forwardRef, ForwardRefRenderFunction } from "react";
-import { HiOutlinePlusSm } from "react-icons/hi";
 
 interface ButtonProps {
   onClick?: () => void;
@@ -18,11 +17,10 @@ const buttonBase: ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
         {...rest}
         ref={ref}
       >
-        <HiOutlinePlusSm fontSize={25} />
         {children}
       </button>
     </>
   );
 };
 
-export const Button = forwardRef(buttonBase);
+export const ButtonAddProperty = forwardRef(buttonBase);
