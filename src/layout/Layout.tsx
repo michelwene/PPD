@@ -20,6 +20,7 @@ export default function Layout() {
       }`}
     >
       <Sidebar />
+
       <div className="flex flex-col flex-1 w-full">
         <Main>asdasdasa</Main>
       </div>
