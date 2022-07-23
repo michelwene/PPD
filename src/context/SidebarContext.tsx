@@ -1,10 +1,25 @@
-import { useState, createContext, useMemo } from "react";
+import { useState, createContext, useContext } from "react";
 
 interface SidebarProviderProps {
   children: React.ReactNode;
 }
 
-export const SidebarContext = createContext({});
+type SidebarContextType = {
+  isSidebarOpen: boolean;
+  toggleSidebar: () => void;
+  closeSidebar: () => void;
+  isDrawerOpen: boolean;
+  toggleDrawer: () => void;
+  closeDrawer: () => void;
+  setIsDrawerOpen: (isDrawerOpen: boolean) => void;
+  isModalOpen: boolean;
+  toggleModal: () => void;
+  closeModal: () => void;
+  isUpdate: boolean;
+  setIsUpdate: (isUpdate: boolean) => void;
+};
+
+export const SidebarContext = createContext({} as SidebarContextType);
 
 export const SidebarProvider = ({ children }: SidebarProviderProps) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -12,7 +27,7 @@ export const SidebarProvider = ({ children }: SidebarProviderProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
 
-  const closeSiderbar = () => setIsSidebarOpen(false);
+  const closeSidebar = () => setIsSidebarOpen(false);
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   const closeDrawer = () => setIsDrawerOpen(false);
@@ -21,25 +36,26 @@ export const SidebarProvider = ({ children }: SidebarProviderProps) => {
   const closeModal = () => setIsModalOpen(false);
   const toggleModal = () => setIsModalOpen(!isModalOpen);
 
-  const value = useMemo(
-    () => ({
-      isSidebarOpen,
-      toggleSidebar,
-      closeSiderbar,
-      isDrawerOpen,
-      toggleDrawer,
-      closeDrawer,
-      setIsDrawerOpen,
-      isModalOpen,
-      toggleModal,
-      closeModal,
-      isUpdate,
-      setIsUpdate,
-    }),
-    [isSidebarOpen, isDrawerOpen, isModalOpen, isUpdate]
-  );
-
   return (
-    <SidebarContext.Provider value={value}>{children}</SidebarContext.Provider>
+    <SidebarContext.Provider
+      value={{
+        isSidebarOpen,
+        toggleSidebar,
+        closeSidebar,
+        isDrawerOpen,
+        toggleDrawer,
+        closeDrawer,
+        setIsDrawerOpen,
+        isModalOpen,
+        toggleModal,
+        closeModal,
+        isUpdate,
+        setIsUpdate,
+      }}
+    >
+      {children}
+    </SidebarContext.Provider>
   );
 };
+
+export const useSideBarContext = () => useContext(SidebarContext);
