@@ -21,6 +21,7 @@ module.exports = {
       "purple-light": "#EBEBFF",
       white: "#FFFFFF",
       "gray-light": "#E6E6E6",
+      "gray-dark": "#7D7D7D",
     },
     fontFamily: {
       sans: ["Source Sans Pro", "sans-serif"],
