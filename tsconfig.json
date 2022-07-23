@@ -26,6 +26,6 @@
     },
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/toast.js"],
   "exclude": ["node_modules"]
 }
